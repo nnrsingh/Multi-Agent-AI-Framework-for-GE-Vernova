@@ -1,0 +1,4 @@
+GHG Protocol Scope 3 Power Sector Compliance Framework:
+- Upstream Scope 3 (Category 1: Purchased Goods) calculation rule: Total material weight in kilograms multiplied by the corresponding material type carbon intensity factor.
+- Downstream Scope 3 (Category 11: Use of Sold Products) calculation rule: Total annual operating hours multiplied by fuel baseline intensity, then multiplied by the carbon reduction factor of any active abatement technologies (such as hydrogen fuel blending percentages or CCS capture rates).
+- Net-Zero Alignment Rule: Any localized surge in downstream usage (e.g., increased grid runtimes due to data center energy requirements) must be fully offset by upstream circular material conversions or a matching increase in clean fuel blending vectors to prevent a net value-chain violation.

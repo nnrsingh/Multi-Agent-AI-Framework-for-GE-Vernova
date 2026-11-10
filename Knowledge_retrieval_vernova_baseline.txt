@@ -1,0 +1,6 @@
+GE Vernova Sustainability Framework & Targets:
+- Base Year: 2019 baseline metrics serve as the anchor for all carbon accounting.
+- Scope 1 & 2 Target: Complete operational carbon neutrality achieved by 2030.
+- Scope 3 Target: Net-zero greenhouse gas emissions across the entire global value chain by 2050.
+- Circularity Mandate: 90% of top-tier products must be covered by the 4R Circularity Framework (Rethink, Reduce, Reuse, Recycle) by 2030.
+- Core Breakthrough Technologies: Deployed assets rely on BWRX-300 Small Modular Reactors (SMRs), Dry Low NOx (DLN) 100% hydrogen combustor retrofits, and commercial-scale Carbon Capture and Storage (CCS) integration frameworks.
