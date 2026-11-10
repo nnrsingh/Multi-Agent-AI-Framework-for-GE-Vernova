@@ -1,0 +1,460 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: advanced-chat
+  name: Vernova-Scope3-Orchestrator
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/agent:0.0.50@bf1040682cc9e1e5caf9b4670531639c440bf9448025cd5ee0915fdcf7a921f3
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/gemini:0.9.10@4979b8843fa46c3c2143d339f5868f04d9d77166616c00dd9f811a4adfce03ab
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/maths:0.0.9@b8b8e96d2fdee9d07c11ba48e1cf7622902597af30744631ba63c8a68dafd44e
+    version: null
+kind: app
+version: 0.7.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        knowledge_file_size_limit: 15
+        single_chunk_attachment_limit: 10
+        skill_file_size_limit: 50
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: true
+      model:
+        completion_params:
+          echo: false
+          frequency_penalty: 0
+          max_tokens: 0
+          presence_penalty: 0
+          stop: []
+          temperature: 0.7
+          top_p: 0
+        mode: chat
+        name: gemini-3.5-flash
+        provider: langgenius/gemini/google
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: agent
+      id: 17837113585780-source-1783710088584-target
+      source: '17837113585780'
+      sourceHandle: source
+      target: '1783710088584'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: knowledge-retrieval
+      id: 1783706505918-source-17837113585780-target
+      source: '1783706505918'
+      sourceHandle: source
+      target: '17837113585780'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: code
+      id: 1783706505918-source-1783709948311-target
+      source: '1783706505918'
+      sourceHandle: source
+      target: '1783709948311'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: agent
+      id: 1783709948311-source-1783710088584-target
+      source: '1783709948311'
+      sourceHandle: source
+      target: '1783710088584'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: agent
+        targetType: answer
+      id: 1783710088584-source-answer-target
+      source: '1783710088584'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: GE Vernova Net-Zero Simulation Parameters
+        selected: false
+        title: User Input
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: Operating Hours
+          options: []
+          placeholder: ''
+          required: true
+          type: number
+          variable: operating_hours
+        - default: ''
+          hint: ''
+          label: Material Weight (kg)
+          options: []
+          placeholder: ''
+          required: true
+          type: number
+          variable: material_weight
+        - default: ''
+          hint: ''
+          label: Material Factor
+          options: []
+          placeholder: ''
+          required: true
+          type: number
+          variable: material_factor
+        - default: ''
+          hint: ''
+          label: Capacity (in MW)
+          options: []
+          placeholder: ''
+          required: true
+          type: number
+          variable: capacity_mw
+        - default: ''
+          hint: ''
+          label: Hydrogen Blend Percentage
+          options: []
+          placeholder: ''
+          required: true
+          type: number
+          variable: h2_blend_pct
+      height: 256
+      id: '1783706505918'
+      position:
+        x: -1697.2151397400003
+        y: -520.3667500828047
+      positionAbsolute:
+        x: -1697.2151397400003
+        y: -520.3667500828047
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        answer: '{{#1783710088584.text#}}{{#1783709948311.result#}}'
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 120
+      id: answer
+      position:
+        x: -772.2111349594969
+        y: -499.36675008280474
+      positionAbsolute:
+        x: -772.2111349594969
+        y: -499.36675008280474
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        code: "def main(hours: float, weight: float, material_factor: float, capacity_mw:\
+          \ float, h2_blend_pct: float) -> dict:\n    # Convert input tokens to standard\
+          \ Python floats\n    try:\n        runtime = float(hours)\n        mass\
+          \ = float(weight)\n        material_factor = float(material_factor)\n  \
+          \      capacity_mw = float(capacity_mw)\n        h2_blend_pct = float(h2_blend_pct)\n\
+          \    except (ValueError, TypeError):\n        return {\"result\": \"ERROR:\
+          \ Input data streams are corrupted or unreadable text. Cannot compute strategy.\"\
+          }\n\n    # \U0001F6D1 CRITICAL EDGE CASE INSURANCE: Catch negative or impossible\
+          \ inputs\n    if runtime < 0 or mass < 0:\n        return {\n          \
+          \  \"result\": f\"CRITICAL WARNING: Invalid physical data entered (Hours:\
+          \ {runtime}, Weight: {mass}kg, Material Factor: {material_factor}, capacity_mw:\
+          \ {capacity_mw} MW, h2_blend_pct: {h2_blend_pct}). \"\n                \
+          \      f\"Industrial supply chains cannot process negative materials or\
+          \ negative runtimes. \"\n                      f\"GE Vernova alignment calculation\
+          \ halted for compliance safety.\"\n        }\n    \n    if runtime == 0\
+          \ and mass == 0:\n        return {\"result\": \"SYSTEM NOTICE: Runtimes\
+          \ and material masses are set to zero. Current value chain carbon footprint\
+          \ is baseline zero. GE Vernova is technically compliant, but no operational\
+          \ data was provided to simulate.\"}\n\n    # Standard Math Execution (Only\
+          \ runs if inputs pass the validation checks above)\n    upstream_footprint\
+          \ = (mass * material_factor) / 1000.0\n    total_mwh_generated = hours *\
+          \ capacity_mw\n    #downstream_footprint = runtime  * capacity_mw\n    baseline_fuel_intensity_mwh\
+          \ = 380.0 \n    \n    # Calculate a non-linear carbon abatement curve factor\
+          \ matching GE Verno\n    if h2_blend_pct >= 100.0:\n        abatement_factor\
+          \ = 0.0 # Zero emissions at 100% H2\n    elif h2_blend_pct >= 75.0:\n  \
+          \      abatement_factor = 0.50 # 50% reduction\n    elif h2_blend_pct >=\
+          \ 50.0:\n        abatement_factor = 0.78 # 22% reduction\n    elif h2_blend_pct\
+          \ >= 25.0:\n        abatement_factor = 0.90 # 10% reduction\n    else:\n\
+          \        abatement_factor = 1.0 # No abatement (Pure Natural Gas)\n    \n\
+          \    downstream_footprint = (total_mwh_generated * (baseline_fuel_intensity_mwh\
+          \ / 1000.0)) * abatement_factor\n\n    total_scope3 = upstream_footprint\
+          \ + downstream_footprint\n\t# Change the safety limit threshold from 5000.0\
+          \ to 3500.0\n    safety_threshold_tons = 3500.0\n    on_track = \"YES\"\
+          \ if total_scope3 <= safety_threshold_tons else \"NO\"\n    \n    return\
+          \ {\n        \"result\": f\"Upstream Footprint: {upstream_footprint:,.2f}\
+          \ tons CO2e. Downstream Footprint: {downstream_footprint:,.2f} tons CO2e.\
+          \ Total Value Chain Trajectory: {total_scope3:,.2f} tons CO2e. Is GE Vernova\
+          \ on track for 2050 targets? {on_track}.\"\n    }"
+        code_language: python3
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Transition_Simulator
+        type: code
+        variables:
+        - value_selector:
+          - '1783706505918'
+          - operating_hours
+          value_type: number
+          variable: hours
+        - value_selector:
+          - '1783706505918'
+          - material_weight
+          value_type: number
+          variable: weight
+        - value_selector:
+          - '1783706505918'
+          - material_factor
+          value_type: number
+          variable: material_factor
+        - value_selector:
+          - '1783706505918'
+          - capacity_mw
+          value_type: number
+          variable: capacity_mw
+        - value_selector:
+          - '1783706505918'
+          - h2_blend_pct
+          value_type: number
+          variable: h2_blend_pct
+      height: 51
+      id: '1783709948311'
+      position:
+        x: -1390.3451454091983
+        y: -499.36675008280474
+      positionAbsolute:
+        x: -1390.3451454091983
+        y: -499.36675008280474
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        agent_parameters:
+          context:
+            type: variable
+            value:
+            - '17837113585780'
+            - result
+          instruction:
+            type: constant
+            value: "You are the Chief Sustainability AI Orchestrator at GE Vernova.\
+              \ You are responsible for ensuring the company reaches its absolute\
+              \ goal of net-zero emissions across the entire global value chain by\
+              \ 2050.\n\nYour operational workflow:\n1. Receive the initial sustainability\
+              \ challenge from the user.\n2. Delegate upstream material verification\
+              \ tasks to the Material_Tracker node and downstream lifecycle projections\
+              \ to the Transition_Simulator node.\n3. Once both nodes return their\
+              \ data, aggregate their metrics.\n4. Cross-reference the findings with\
+              \ the GHG Protocol Value Chain Standard and GE Vernova's official 2019\
+              \ baseline metrics stored in your Knowledge Base.\n5. Provide the user\
+              \ with a highly structured, C-suite ready executive recommendation.\
+              \ Conclude explicitly stating if the scenario keeps GE Vernova on track\
+              \ for 2050.\n\n...\n[CRITICAL] Review the ongoing conversation history\
+              \ below to understand if the user is asking a follow-up question about\
+              \ your previous calculation:\n\n {{#sys.query#}}{{#1783709948311.result#}}"
+          maximum_iterations:
+            type: constant
+            value: 5
+          model:
+            type: constant
+            value:
+              completion_params:
+                temperature: 0.5
+              mode: chat
+              model: gemini-3.1-flash-lite
+              model_type: llm
+              provider: langgenius/gemini/google
+              type: model-selector
+          query:
+            type: constant
+            value: '{{#sys.query#}}{{#1783709948311.result#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: A tool for evaluating an math expression, calculated
+                  locally with NumExpr.
+              parameters:
+                expression:
+                  auto: 1
+                  value: null
+              plugin_id: langgenius/maths
+              provider_name: langgenius/maths/maths
+              provider_show_name: langgenius/maths/maths
+              settings: {}
+              tool_description: A tool for evaluating an math expression, calculated
+                locally with NumExpr.
+              tool_label: Evaluate Math Expression
+              tool_name: eval_expression
+              type: builtin
+        agent_strategy_label: ReAct
+        agent_strategy_name: ReAct
+        agent_strategy_provider_name: langgenius/agent/agent
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          window:
+            enabled: false
+            size: 50
+        meta:
+          minimum_dify_version: 1.7.0
+          version: 0.0.2
+        output_schema: {}
+        plugin_unique_identifier: langgenius/agent:0.0.40@d00a70e81bfb28fadd52cba7fd7a1f7c344c67b051e4a2e356a06c690736a7c4
+        selected: false
+        title: NetZero_Orchestrator
+        tool_node_version: '2'
+        type: agent
+      height: 187
+      id: '1783710088584'
+      position:
+        x: -1074.823654019578
+        y: -499.36675008280474
+      positionAbsolute:
+        x: -1074.823654019578
+        y: -499.36675008280474
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - 7MXfQWd3skRSc+HJOfi9cB2+IvL8DH6jSPYZUVAOW0USXNRNGV++HRyIhtCyku0s
+        - zobbaOB47tXJtQz8ybQX1h/7Bp4aksbf8f/cR1WV284bSNEq0c5lAz3EK8RdwNwx
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: weighted_score
+          top_k: 4
+          weights:
+            keyword_setting:
+              keyword_weight: 0
+            vector_setting:
+              embedding_model_name: gemini-embedding-001
+              embedding_provider_name: langgenius/gemini/google
+              vector_weight: 1
+            weight_type: customized
+        query_attachment_selector: []
+        query_variable_selector:
+        - sys
+        - query
+        retrieval_mode: multiple
+        selected: false
+        title: Knowledge Retrieval (1)
+        type: knowledge-retrieval
+      height: 117
+      id: '17837113585780'
+      position:
+        x: -1390.3451454091983
+        y: -675.0631126225038
+      positionAbsolute:
+        x: -1390.3451454091983
+        y: -675.0631126225038
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    viewport:
+      x: 1779.4899544603486
+      y: 912.6511677306665
+      zoom: 1.018855358641273
+  rag_pipeline_variables: []
